@@ -354,7 +354,7 @@ class OpenCloseTrait(_Trait):
         protected = self.state.protected
         if features & ATTRS_PERCENTAGE:
             url = DOMOTICZ_URL + '/json.htm?type=command&param=switchlight&idx=' + self.state.id + '&switchcmd=Set%20Level&level=' + str(
-                100 - params['openPercent'])
+                params['openPercent'])
         else:
             p = params.get('openPercent', 50)
 
@@ -362,10 +362,10 @@ class OpenCloseTrait(_Trait):
 
             if p == 100:
                 # open
-                url += 'Off'
+                url += 'On'
             elif p == 0:
                 # close
-                url += 'On'
+                url += 'Off'
 
         if protected:
             url = url + '&passcode=' + configuration['Domoticz']['switchProtectionPass']
